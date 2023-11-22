@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 /**
  * Desde aqui se maneja el header en todas las carpetas
@@ -6,16 +6,16 @@ import Image from "next/image";
  */
 
 
-const header = () => {
+const Header = () => {
 
     return (
         <>
             <header>
-                
+                Hola mundo
             </header>
         </>
     )
 
 }
 
-export default header;
+export default Header;
