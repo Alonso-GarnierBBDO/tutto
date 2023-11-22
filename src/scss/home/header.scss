@@ -41,7 +41,7 @@ header{
 
         @include keyframes(logo_animation){
             0%{
-                transform: translateY(100px);
+                transform: translateY(50px);
                 opacity: 0;
             }
 
@@ -51,7 +51,7 @@ header{
             }
         }
 
-        @include animate(logo_animation, 2s, ease, 1);
+        @include animate(logo_animation, 1s, ease, 1);
 
     }
 
