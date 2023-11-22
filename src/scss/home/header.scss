@@ -9,6 +9,8 @@ header{
     align-content: center;
     padding: 20px 30px;
     position: relative;
+    overflow: hidden;
+    align-items: center;
 
     @include bp(tablet){
         background-image: url('../../assets/img/tutto_background_escritorio.jpg');
@@ -72,6 +74,41 @@ header{
             display: flex;
             flex-flow: column;
             align-content: center;
+            align-items: center;
+
+            &:first-of-type{
+
+                img{
+                    position: absolute;
+                    bottom: -15%;
+                    width: auto;
+                    height: 100%;
+                    transform: translateY(0px);
+                    opacity: 1;
+
+                    @include keyframes(chocolateImageEscritorio){
+        
+                        0%{
+                            transform: translateY(50px);
+                            opacity: 0;
+                        }
+            
+                        25%{
+                            transform: translateY(50px);
+                            opacity: 0;
+                        }
+            
+                        100%{
+                            transform: translateY(0px);
+                            opacity: 1;
+                        }
+                    }
+            
+                    @include animate(chocolateImageEscritorio, 1.5s, ease, 1);
+
+                }
+                
+            }
 
             .placer{
 
@@ -194,6 +231,53 @@ header{
 
     }
 
-    
+    .chocolate{
+        position: absolute;
+        bottom: 0px;
+        width: auto;
+        height: 50%;
+        z-index: 3;
+        transform: translateY(0px);
+        opacity: 1;
+
+        @include keyframes(chocolateImage){
+        
+            0%{
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            25%{
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            35%{
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            50%{
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+
+        @include animate(chocolateImage, 2.5s, ease, 1);
+
+        @include bp(tablet){
+            height: 40%;
+        }
+
+        @include bp(laptop){
+            display: none;
+        }
+
+    }    
 
 }
