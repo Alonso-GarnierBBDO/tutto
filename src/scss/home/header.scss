@@ -168,6 +168,7 @@ header{
                 p{
                     font-size: rem(20px);
                     font-family: $font-two;
+                    text-wrap: balance;
 
                     @include bp(tablet){
                         font-size: rem(25px);
