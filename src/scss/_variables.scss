@@ -1,3 +1,20 @@
+// Fonts
+
+@font-face {
+    font-family: DinotBold;
+    src: url('../assets/fonts/dinot_bold.otf');
+}
+
+@font-face {
+    font-family: MyriadProRegular;
+    src: url('../assets/fonts/myriad_pro_regular.otf');
+}
+
+@font-face {
+    font-family: Nabila;
+    src: url('../assets/fonts/nabila.ttf');
+}
+
 // Animation
 
 @mixin keyframes($name){
@@ -49,5 +66,11 @@
 $color-one: #71130D;
 $color-two: #FCEEDE;
 $color-tercero: #684427;
+$color-cuarto: #F2CBA2;
 
 // En mobile debe ser un 100% -  50% sin haberle agregado un padding extra al box
+
+// Fonts
+$font-two: DinotBold;
+$font-three: MyriadProRegular;
+$font-four: Nabila;
