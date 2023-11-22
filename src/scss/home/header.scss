@@ -1,15 +1,58 @@
 header{
-    height: calc(100% - 100px); 
+    height: calc(100% - 40px); 
     width: calc(100% - 100px);
     background-image: url('../../assets/img/background_mobile.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
-    padding: 50px;
+    padding: 20px 50px;
 
     @include bp(tablet){
         background-image: url('../../assets/img/tutto_background_escritorio.jpg');
+    }
+
+    .logo{
+
+        width: auto;
+        height: rem(70px);
+        transform: translateY(0px);
+        opacity: 1;
+
+        @include bp(mobileBIG){
+            height: rem(90px);
+        }
+
+        @include bp(tablet){
+            height: rem(100px);
+        }
+
+        @include bp(tabletMD){
+            height: rem(110px);
+        }
+
+        @include bp(laptop){
+            height: rem(120px);
+        }
+
+        @include bp(escritorio){
+            height: rem(130px);
+        }
+
+        @include keyframes(logo_animation){
+            0%{
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+
+        @include animate(logo_animation, 2s, ease, 1);
+
     }
 
 }
