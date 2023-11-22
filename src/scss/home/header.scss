@@ -160,6 +160,10 @@ header{
                 text-align: center;
                 color: $color-cuarto;
 
+                @include bp(laptop){
+                    padding: 35px;
+                }
+
                 @include keyframes(description){
         
                     0%{
