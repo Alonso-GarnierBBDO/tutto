@@ -85,6 +85,11 @@ header{
                     height: 100%;
                     transform: translateY(0px);
                     opacity: 1;
+                    display: none;
+
+                    @include bp(laptop){
+                        display: block;
+                    }
 
                     @include keyframes(chocolateImageEscritorio){
         
