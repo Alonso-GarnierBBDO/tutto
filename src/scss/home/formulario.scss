@@ -153,6 +153,9 @@
                     font-size: rem(15px);
                     font-family: $font-two;
                     color: $color-siete;
+                    -webkit-appearance:none;
+                    -moz-appearance:none;
+                    appearance:none;
 
                     @include bp(tabletMD){
                         width: 100%;
