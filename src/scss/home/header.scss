@@ -11,6 +11,8 @@ header{
     position: relative;
     overflow: hidden;
     align-items: center;
+    z-index: 0;
+
 
     @include bp(tablet){
         background-image: url('../../assets/img/tutto_background_escritorio.jpg');
