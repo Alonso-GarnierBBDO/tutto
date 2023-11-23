@@ -29,8 +29,12 @@ header{
         border: 10px solid $color-cuarto;
 
         @include bp(tablet){
-            bottom: -40px;
+            bottom: -150px;
             height: 200px;
+        }
+
+        @include bp(tabletMD){
+            bottom: -150px;
         }
 
         @include bp(laptop){

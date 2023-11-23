@@ -1,0 +1,41 @@
+.content_inscription{
+
+    background-color: $color-quinto;
+    padding-top: 10px;
+    padding-bottom: 40px;
+
+    @include bp(laptop){
+        padding-bottom: 80px;
+    }
+
+    .content{
+
+        width: calc(100% - 80px);
+        margin: auto;
+        text-align: center;
+        text-wrap: balance;
+        font-size: rem(30px);
+        color: $color-cuarto;
+        font-family: $font-two;
+
+        @include bp(laptop){
+            max-width: 1050px;
+        }
+
+        @include bp(escritorio){
+            max-width: 1550px;
+        }
+
+
+        p{
+            margin-bottom: 25px;
+
+            &:last-of-type{
+                margin-bottom: 0px;
+            }
+
+        }
+
+    }
+
+}
