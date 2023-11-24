@@ -1,4 +1,5 @@
-
+import Image from "next/image";
+import BuzonImage from '@/assets/img/buzon.png';
 
 const FormularioComponent = () => {
 
@@ -153,6 +154,11 @@ const FormularioComponent = () => {
 
                     </form>
                 </section>
+
+                <section className="ilustracion">
+                    <Image className="buzon" src={BuzonImage.src} alt="Ilustración de buzón" width={BuzonImage.width} height={BuzonImage.height} priority />
+                </section>
+
             </section>
         </>
     )
