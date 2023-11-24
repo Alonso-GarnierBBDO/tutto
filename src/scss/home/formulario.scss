@@ -73,7 +73,11 @@
             font-size: rem(22px);
 
             @include bp(tablet){
-                font-size: rem(30px);
+                font-size: rem(35px);
+            }
+
+            @include bp(laptop){
+                width: 90%;
             }
 
         }
@@ -88,7 +92,8 @@
             font-size: rem(17px);
 
             @include bp(laptop){
-                font-size: rem(20px);
+                font-size: rem(23px);
+                width: 90%;
             }
 
         }
@@ -102,6 +107,12 @@
             margin-bottom: 15px;
             text-align: center;
             display: block;
+
+            @include bp(laptop){
+                font-size: rem(15px);
+                margin-bottom: 30px;
+            }
+
         }
 
         form{
@@ -111,22 +122,27 @@
             row-gap: 10px;
             margin-bottom: 25px;
 
+            @include bp(laptop){
+                width: 90%;
+                margin: auto;
+            }
+
             label{
                 display: flex;
                 flex-flow: column;
 
-                @include bp(tabletMD){
+                @include bp(tablet){
                     flex-flow: row;
                     align-items: center;
                     column-gap: 10px;
                     margin: auto;
                 }
 
-                @include bp(laptop){
+                @include bp(tablet){
                     width: 70%;
                 }
 
-                span{
+                .item{
                     display: block;
                     margin-bottom: 5px;
                     font-family: $font-two;
@@ -137,6 +153,7 @@
 
                     @include bp(tablet){
                         text-wrap: stable;
+                        font-size: rem(17px);
                     }
 
                 }
@@ -157,8 +174,9 @@
                     -moz-appearance:none;
                     appearance:none;
 
-                    @include bp(tabletMD){
+                    @include bp(tablet){
                         width: 100%;
+                        font-size: rem(17px);
                     }
 
                     &:focus{
@@ -168,6 +186,178 @@
 
                 }
 
+                input[type=radio]{
+
+                    position: relative;
+                    overflow: hidden;
+                    padding: 0px;
+                    width: 25px;
+                    height: 23px;
+                    margin-right: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 3px;
+                    border: none;
+                    cursor: pointer;
+
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        width: 70%;
+                        height: 70%;
+                        background-color: transparent;
+                        border-radius: 3px;
+                        transition: .2s ease;
+                    }
+
+                    &:checked{
+
+                        &::before{
+                            background-color: $color-quinto;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            .quiz{
+
+                .question{
+                    margin-top: 10px;
+
+                    .item_question{
+
+                        margin-bottom: 15px;
+                        display: block;
+                        text-transform: uppercase;
+                        font-size: rem(20px);
+                        font-family: $font-two;
+                        color: $color-siete;
+
+                        @include bp(laptop){
+                            font-size: rem(23px);
+                        }
+
+                    }
+
+                }
+
+                label{
+                    flex-flow: row;
+                    margin-bottom: 5px;
+                    font-size: rem(15px);
+                    font-family: $font-two;
+                    color: $color-siete;
+                    cursor: pointer;
+
+
+                    @include bp(tablet){
+                        width: 100%;
+                        font-size: rem(17px);
+                    }
+
+                    span{
+                        display: block;
+                        width: 100%;
+                        text-transform: uppercase;
+                    }
+
+                }
+
+                .message{
+
+                    display: flex;
+                    flex-flow: column;
+                    display: block;
+    
+                    span{
+    
+                        margin-bottom: 15px;
+                        margin-top: 15px;
+                        display: block;
+                        text-transform: inherit;
+                        font-size: rem(20px);
+                        font-family: $font-four;
+                        color: $color-siete;
+                        width: 100%;
+                        display: block;
+    
+                        @include bp(laptop){
+                            font-size: rem(23px);
+                            text-transform: inherit;
+                        }
+    
+                    }
+
+                    textarea{
+
+                        background-color: $color-ocho;
+                        border: none;
+                        padding: 10px;
+                        border-radius: 5px;
+                        transition: .2s ease;
+                        border: 2px solid;
+                        border-color: $color-ocho;
+                        font-size: rem(15px);
+                        font-family: $font-two;
+                        color: $color-siete;
+                        resize: vertical;
+                        min-height: 150px;
+                        max-height: 400px;
+                        width: calc(100% - 25px);
+
+                        @include bp(tablet){
+                            width: 100%;
+                            font-size: rem(17px); 
+                        }
+
+                        &:focus{
+                            outline: none;
+                            border-color: $color-one;
+                        }
+
+                    }
+    
+                }
+
+            }
+
+            button{
+                width: 100%;
+                color: $color-cuarto;
+                border: none;
+                padding: 10px;
+                border-radius: 25px;
+                background-color: $color-siete;
+                font-size: rem(15px);
+                font-family: $font-two;
+                cursor: pointer;
+                text-transform: uppercase;
+                margin-top: 10px;
+                border: 2px solid $color-siete;
+                transition: .2s ease;
+
+                &:hover{
+                    color: $color-siete;
+                    background-color: $color-cuarto;
+
+                }
+
+                &:active{
+                    transform: scale(0.95);
+                    border: 2px solid $color-cuarto;
+                }
+
+                @include bp(tablet){
+                    font-size: rem(17px);
+                    width: 300px;
+                    margin: 10px auto 10px auto;
+
+                }
+                
             }
 
         }
