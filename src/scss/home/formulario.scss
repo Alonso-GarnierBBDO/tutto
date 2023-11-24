@@ -367,11 +367,12 @@
     }
 
     .ilustracion{
-
+        margin-top: 10px;
         .buzon{
             margin: auto;
             width: 100%;
             height: auto;
+            transform: translateY(15px);
         }
 
     }
