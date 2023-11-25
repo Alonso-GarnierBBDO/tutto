@@ -21,6 +21,7 @@ const FormularioComponent = () => {
     const [disable, setDisabled] = useState<boolean>(false);
     const [countryCode, setCountryCode] = useState<string>('');
     const [openmodal, setOpenModal] = useState<boolean>(false);
+    const [puntosUser, setPuntosUser] = useState<number>(0);
 
     // Registramos supabase
     const supabaseUrl = 'https://jkuwgrxanzpagiydglaz.supabase.co'
@@ -114,7 +115,6 @@ const FormularioComponent = () => {
 
         moveTop();
 
-
     }
 
 
@@ -193,6 +193,8 @@ const FormularioComponent = () => {
                     questionFourInput &&
                     deseoInput) {
 
+                    
+
                     const name: string = nameInput.value;
                     const lastName: string = lastNameInput.value;
                     const genero : string = generoInput.value;
@@ -267,12 +269,20 @@ const FormularioComponent = () => {
 
                     if(error){
                         alert("Ocurrió un error al enviar el formulario, por favor inténtelo más tarde.")
-                        console.log(error);
+                        console.error(error);
                     }
 
                     deseoInput.disabled = false;
                     setTextSend('ENVIÁ TU DESEO AQUÍ')
                     setDisabled(false);
+
+                    const numberQuestionOne = parseInt(questionOne);
+                    const numberQuestionTwo = parseInt(questionTwo);
+                    const numberQuestionThree = parseInt(questionThree);
+                    const numberQuestionFour = parseInt(questionFour);
+
+                    puntos([numberQuestionOne, numberQuestionTwo, numberQuestionThree, numberQuestionFour]);
+
 
 
                 }
@@ -283,6 +293,34 @@ const FormularioComponent = () => {
         }else{
             setMessage('Complete el deseo.')
         }
+
+    }
+
+    const puntos = ( numbers : number[]) => {
+
+        let sumaPuntos : number[] =  [];
+        let suma : number = 0;
+
+        numbers.forEach( e => {
+
+            if(e == 1){
+                sumaPuntos.push(0.25);
+            }else if(e == 2){
+                sumaPuntos.push(0.50);
+            }else if(e == 3){
+                sumaPuntos.push(0.75);
+            }else if(e == 4){
+                sumaPuntos.push(1);
+            }else{
+                sumaPuntos.push(0);
+            }
+            
+        });
+
+        suma = sumaPuntos.reduce( (acumular, actual) => acumular + actual );
+
+
+        setPuntosUser(suma);
 
     }
 
@@ -518,7 +556,7 @@ const FormularioComponent = () => {
             {
                 openmodal ? ( 
                     <section className="view_modal">
-                        <ThanksComponent country={countryCode}/>
+                        <ThanksComponent puntos={puntosUser} country={countryCode}/>
                     </section>
                 ) : ''
             }

@@ -11,7 +11,7 @@ import ChocaloateImageEscritorio from '@/assets/img/chocolate_escritorio.png';
  */
 
 
-const Thanks = ( { country } : { country: string } ) => {
+const Thanks = ( { country, puntos } : { country: string, puntos: number } ) => {
 
     return (
         <>
@@ -27,7 +27,7 @@ const Thanks = ( { country } : { country: string } ) => {
                             <h3>nos estaremos viendo muy pronto debajo del árbol 😏</h3>
                             <Image src={BackgroundDescription.src} alt="Fondo de color solido" width={500} height={500} priority />
                         </section>
-                        <a href={`/mi-tutto?me=2&country=${country}`}>DESCUBRÍ AQUÍ TU TUTTO PARA NAVIDAD</a>
+                        <a href={`/mi-tutto?points=${puntos}&country=${country}`}>DESCUBRÍ AQUÍ TU TUTTO PARA NAVIDAD</a>
                     </section>
                 </section>
                 <Image className="chocolate" src={ChocaloateImage.src} width={250} height={250} alt="Chocolate Tutto" priority/>
