@@ -571,7 +571,7 @@
             .box{
                 .description {
 
-                    transform: translateY(-40px);
+                    transform: translateY(-30px);
 
                     @include keyframes(descriptionTwo){
         
@@ -591,12 +591,16 @@
                         }
             
                         100%{
-                            transform: translateY(-40px);
+                            transform: translateY(-30px);
                             text-align: center;
                         }
                     }
             
                     @include animate(descriptionTwo, 2s, ease, 1);
+
+                    h3{
+                        margin-bottom: 0px;
+                    }
 
                 }
             }

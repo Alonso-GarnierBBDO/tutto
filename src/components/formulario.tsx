@@ -554,7 +554,7 @@ const FormularioComponent = () => {
 
             </section>
             {
-                openmodal ? ( 
+                !openmodal ? ( 
                     <section className="view_modal">
                         <ThanksComponent puntos={puntosUser} country={countryCode}/>
                     </section>
