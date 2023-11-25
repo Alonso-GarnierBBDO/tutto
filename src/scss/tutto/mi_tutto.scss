@@ -17,6 +17,20 @@
         object-fit: cover;
         user-select: none;
         pointer-events: none;
+
+        @include keyframes(viewBackground){
+        
+            0%{
+                opacity: 0;
+            }
+
+            100%{
+                opacity: 1;
+            }
+        }
+
+        @include animate(viewBackground, .7s, ease, 1);
+
     }
 
     .container{
@@ -102,6 +116,8 @@
             z-index: -1;
             user-select: none;
             pointer-events: none;
+
+
         }
 
     }

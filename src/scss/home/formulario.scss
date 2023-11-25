@@ -573,7 +573,7 @@
 
                     transform: translateY(-40px);
 
-                    @include keyframes(description){
+                    @include keyframes(descriptionTwo){
         
                         0%{
                             transform: translateY(50px);
@@ -596,7 +596,7 @@
                         }
                     }
             
-                    @include animate(description, 2s, ease, 1);
+                    @include animate(descriptionTwo, 2s, ease, 1);
 
                 }
             }
