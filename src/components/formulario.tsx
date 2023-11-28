@@ -3,7 +3,7 @@
 import Image from "next/image";
 import BuzonImage from '@/assets/img/buzon.png';
 import ThanksComponent from '@/components/thanks';
-import { useEffect, useState, useRef, FormEvent } from "react";
+import { useEffect, useState, useRef, FormEvent, ChangeEvent, ChangeEventHandler } from "react";
 import { createClient } from '@supabase/supabase-js';
 
 const FormularioComponent = () => {
@@ -22,6 +22,8 @@ const FormularioComponent = () => {
     const [countryCode, setCountryCode] = useState<string>('');
     const [openmodal, setOpenModal] = useState<boolean>(false);
     const [puntosUser, setPuntosUser] = useState<number>(0);
+    const [viewState, setViewState] = useState<boolean>(false)
+    const [openProvincia, setOpenProvincia] = useState<boolean>(true)
 
     // Registramos supabase
     const supabaseUrl = 'https://jkuwgrxanzpagiydglaz.supabase.co'
@@ -72,7 +74,7 @@ const FormularioComponent = () => {
                     });
 
                     if(!quiz){
-                        setMessage('Complete el quiz.');
+                        setMessage('Responde todas las preguntas.');
                     }else{
                         setViewData(false);
                         setViewQuestion(false);
@@ -167,6 +169,7 @@ const FormularioComponent = () => {
                 const yearInput : HTMLInputElement | undefined = document.getElementsByName('year')[0] as HTMLInputElement | undefined;
                 const paisInput : HTMLInputElement | undefined = document.getElementsByName('pais')[0] as HTMLInputElement | undefined;
                 const provinciaInput : HTMLInputElement | undefined = document.getElementsByName('provincia')[0] as HTMLInputElement | undefined;
+                const departamentosInput : HTMLInputElement | undefined = document.getElementsByName('departamentos')[0] as HTMLInputElement | undefined;
 
                 // Preguntas
 
@@ -186,14 +189,11 @@ const FormularioComponent = () => {
                     emailInput && 
                     phoneInput && 
                     yearInput && 
-                    provinciaInput && 
                     questionOneInput &&
                     questionTwoInput &&
                     questionThreeInput &&
                     questionFourInput &&
                     deseoInput) {
-
-                    
 
                     const name: string = nameInput.value;
                     const lastName: string = lastNameInput.value;
@@ -201,8 +201,9 @@ const FormularioComponent = () => {
                     const email : string = emailInput.value;
                     const phone : string = phoneInput.value;
                     const year : string = yearInput.value;
-                    const provincia : string = provinciaInput.value;
-                    const pais : string | undefined= paisInput?.value;
+                    const provincia : string | undefined = provinciaInput?.value;
+                    const pais : string | undefined = paisInput?.value;
+                    const departamentos : string | undefined = departamentosInput?.value;
 
 
                     // Preguntas
@@ -211,6 +212,7 @@ const FormularioComponent = () => {
                     const questionTwo : string = questionTwoInput.value;
                     const questionThree : string = questionThreeInput.value;
                     const questionFour : string = questionFourInput.value;
+                    let saveInfo = {}
 
                     // Deseo
 
@@ -238,22 +240,46 @@ const FormularioComponent = () => {
                     setTextSend('Enviando...')
                     setDisabled(true);
 
+                    if(countryCode == '/cam'){
 
-                    const { data, error } = await supabase.from(countryTable).insert([{
-                        nombre: name,
-                        apellido: lastName,
-                        genero: genero,
-                        correo: email,
-                        telefono: phone,
-                        edad: year,
-                        pais: country,
-                        provincia: provincia,
-                        pregunta_uno: questionOne,
-                        pregunta_dos: questionTwo,
-                        pregunta_tres: questionThree,
-                        pregunta_cuatro: questionFour,
-                        mensaje: deseo
-                    }]).select();
+                        saveInfo = {
+                            nombre: name,
+                            apellido: lastName,
+                            genero: genero,
+                            correo: email,
+                            telefono: phone,
+                            edad: year,
+                            pais: country,
+                            provincia: provincia ? provincia : null,
+                            departamentos: departamentos ? departamentos : null,
+                            pregunta_uno: questionOne,
+                            pregunta_dos: questionTwo,
+                            pregunta_tres: questionThree,
+                            pregunta_cuatro: questionFour,
+                            mensaje: deseo
+                        }
+
+                    }else{
+                        saveInfo = {
+                            nombre: name,
+                            apellido: lastName,
+                            genero: genero,
+                            correo: email,
+                            telefono: phone,
+                            edad: year,
+                            pais: country,
+                            provincia: provincia ? provincia : null,
+                            pregunta_uno: questionOne,
+                            pregunta_dos: questionTwo,
+                            pregunta_tres: questionThree,
+                            pregunta_cuatro: questionFour,
+                            mensaje: deseo
+    
+                        }
+                    }
+
+
+                    const { data, error } = await supabase.from(countryTable).insert([saveInfo]).select();
 
                     if(data){
                         setOpenModal(true);
@@ -291,7 +317,7 @@ const FormularioComponent = () => {
 
 
         }else{
-            setMessage('Complete el deseo.')
+            setMessage('Completa tu deseo')
         }
 
     }
@@ -335,14 +361,32 @@ const FormularioComponent = () => {
 
     }
 
+    const viewItems = ( e : any ) => {
+
+        setViewState(true);
+        const tag = e.target;
+
+        if(tag){
+
+            const value = tag.value;
+
+            if(value == 'Panamá'){
+                setOpenProvincia(true)
+            }else{
+                setOpenProvincia(false)
+            }
+
+        }
+    }
+
 
     return (
         <>
             <section className="formulario_sections">
                 <section className="content" ref={contentForm}>
-                    <h3>Primero conozcámonos un poco más!</h3>
-                    <p>compartime tus datos para contactarte si sos el ganador, y para enviarte sorpresas o nuevas promociones en el futuro.</p>
-                    <span className="subtitle">*disclaimer sobre uso de datos</span>
+                    <h3 className={`${viewData ? 'view' : ''}`}><span>!</span>Primero conozcámonos un poco más!</h3>
+                    <p className={`${viewData ? 'view' : ''}`}>Compárteme tus datos para contactarte si eres el ganador, y para enviarte sorpresas o nuevas promociones en el futuro.</p>
+                    {/* <span className="subtitle">*disclaimer sobre uso de datos</span> */}
                     <form onSubmit={ e => sendForm(e) } className={`${viewQuestion || viewDeseo ? 'view' : ''}`} >
 
                         <section className={`part_one content_item ${viewData ? 'view' : ''}`} ref={partOne}>
@@ -379,7 +423,7 @@ const FormularioComponent = () => {
                                 countryCode == '/cam' ? (
                                     <label htmlFor="pais">
                                         <span className="item">País:</span>
-                                        <select name="pais" id="pais" required>
+                                        <select name="pais" id="pais" required onChange={ viewItems }>
                                             <option value="">Seleccione el país</option>
                                             <option value="Guatemala">Guatemala</option>
                                             <option value="Honduras">Honduras</option>
@@ -389,10 +433,38 @@ const FormularioComponent = () => {
                                     </label>
                                 ) : ''
                             }
-                            <label htmlFor="provincia">
-                                <span className="item">Provincia:</span>
-                                <input type="text" name="provincia" id="provincia" required/>
-                            </label>
+
+                            {
+                                countryCode == '/cam' ? (
+                                    <>
+                                        {
+                                            viewState ? (
+                                                <>
+                                                    {
+                                                        openProvincia ? (
+                                                            <label htmlFor="provincia">
+                                                                <span className="item">Provincia:</span>
+                                                                <input type="text" name="provincia" id="provincia" required/>
+                                                            </label>
+                                                        ) : (
+                                                            <label htmlFor="departamentos">
+                                                                <span className="item">Departamento :</span>
+                                                                <input type="text" name="departamentos" id="departamentos" required/>
+                                                            </label>
+                                                        )
+                                                    }
+                                                </>
+                                            ) : ''
+                                        }
+                                    </>
+                                ) : (
+                                    <label htmlFor="provincia">
+                                        <span className="item">Provincia:</span>
+                                        <input type="text" name="provincia" id="provincia" required/>
+                                    </label>
+                                )
+                            }
+
                         </section>
 
 
@@ -499,7 +571,7 @@ const FormularioComponent = () => {
                                 {/* Message */}
 
                                 <label htmlFor="message" className="message">
-                                    <span>Ahora dejá tu deseo más seductor en mi buzón para quedar participando!</span>
+                                    <span><span className="interrogador">!</span>Ahora dejá tu deseo más seductor en mi buzón para quedar participando!</span>
                                     <textarea name="message" id="message"></textarea>
                                 </label>
 

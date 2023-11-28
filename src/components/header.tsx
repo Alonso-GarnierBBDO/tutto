@@ -25,7 +25,7 @@ const Header = () => {
                         <Image className="placer" src={PlacerText.src} alt="Navidad es para dar...te placer" title="Navidad es para dar...te placer" width={200} height={200} priority/>
                         <section className="description">
                             <h3>Hola, <span>?</span>ya hiciste tu lista?</h3>
-                            <p>En navidad algunos le dejan sus deseos a Santa, pero esta Navidad vos dejámelos a mí.​</p>
+                            <p>Algunos le dejan sus deseos a Santa, pero esta Navidad vos dejámelos a mí.​</p>
                             <Image src={BackgroundDescription.src} alt="Fondo de color solido" width={500} height={500} priority />
                         </section>
                     </section>

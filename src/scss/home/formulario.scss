@@ -73,6 +73,8 @@
             font-family: $font-four;
             text-wrap: balance;
             font-size: rem(22px);
+            justify-content: center;
+            display: none;
 
             @include bp(tablet){
                 font-size: rem(35px);
@@ -84,24 +86,40 @@
                 width: 90%;
             }
 
+            span{
+                transform: rotate(173deg) translate(-2px, -3px);
+                display: flex;
+            }
+
+        }
+
+        h3.view{
+            display: flex;
         }
 
         p{
             margin-top: 15px;
-            margin-bottom: 8px;
+            // margin-bottom: 8px;
             text-align: center;
             text-transform: uppercase;
             font-family: $font-two;
             color: $color-siete;
             font-size: rem(17px);
+            margin-bottom: 15px;
+            display: none;
 
             @include bp(laptop){
                 font-size: rem(23px);
                 width: 90%;
                 margin-left: auto;
                 margin-right: auto;
+                margin-bottom: 30px;
             }
 
+        }
+
+        p.view{
+            display: block;
         }
 
         .subtitle{
@@ -139,6 +157,21 @@
                 display: flex;
                 flex-flow: column;
                 margin-bottom: 10px;
+                opacity: 1;
+
+                @include keyframes(viewLabel){
+
+                    0%{
+                        opacity: 0;
+                    }
+
+                    100%{
+                        opacity: 1;
+                    }
+
+                }
+
+                @include animate(viewLabel, .5s, ease, 1);
 
                 @include bp(tablet){
                     flex-flow: row;
@@ -299,6 +332,11 @@
                         @include bp(laptop){
                             font-size: rem(23px);
                             text-transform: inherit;
+                        }
+
+                        .interrogador{
+                            display: inline-block;
+                            transform: rotate(173deg) translate(-2px, -3px);
                         }
     
                     }
