@@ -11,7 +11,9 @@ import ChocaloateImageEscritorio from '@/assets/img/chocolate_escritorio.png';
  */
 
 
-const Thanks = ( { country, puntos } : { country: string, puntos: number } ) => {
+
+
+const Thanks = ( { country, puntos, gracias, gracias_button } : { country: string, puntos: number, gracias : string, gracias_button : string } ) => {
 
     return (
         <>
@@ -23,11 +25,11 @@ const Thanks = ( { country, puntos } : { country: string, puntos: number } ) => 
                     <section className="box">
                         <Image className="placer" src={ParticipandoText.src} alt="Ya estas participando" title="Ya estas participando" width={200} height={200} priority/>
                         <section className="description">
-                            <p>ahora me voy a leer todos los deseos que me han llegado y si tenés suerte...</p>
+                            <p>{gracias}</p>
                             <h3>nos estaremos viendo muy pronto debajo del árbol 😏</h3>
                             <Image src={BackgroundDescription.src} alt="Fondo de color solido" width={500} height={500} priority />
                         </section>
-                        <a href={`/mi-tutto?points=${puntos}&country=${country}`}>DESCUBRÍ AQUÍ TU TUTTO PARA NAVIDAD</a>
+                        <a href={`/mi-tutto?points=${puntos}&country=${country}`}>{gracias_button}</a>
                     </section>
                 </section>
                 <Image className="chocolate" src={ChocaloateImage.src} width={250} height={250} alt="Chocolate Tutto" priority/>

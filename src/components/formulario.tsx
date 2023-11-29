@@ -6,7 +6,22 @@ import ThanksComponent from '@/components/thanks';
 import { useEffect, useState, useRef, FormEvent, ChangeEvent, ChangeEventHandler } from "react";
 import { createClient } from '@supabase/supabase-js';
 
-const FormularioComponent = () => {
+type Content =  {
+    formulario: {
+        cuartaPregunta: string,
+    },
+    deseo: {
+        text: string
+    },
+    enviar: {
+        enviar: string,
+        compartir: string,
+    },
+    gracias: string,
+    gracias_button: string
+}
+
+const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button} : Content ) => {
 
     const partOne = useRef<HTMLElement | null>(null);
     const partTwo = useRef<HTMLElement | null>(null);
@@ -17,7 +32,7 @@ const FormularioComponent = () => {
     let [viewQuestion, setViewQuestion] = useState<boolean>(false);
     let [viewDeseo, setViewDeseo] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
-    const [textSend, setTextSend] = useState<string>('ENVIÁ TU DESEO AQUÍ');
+    const [textSend, setTextSend] = useState<string>(enviar.enviar);
     const [disable, setDisabled] = useState<boolean>(false);
     const [countryCode, setCountryCode] = useState<string>('');
     const [openmodal, setOpenModal] = useState<boolean>(false);
@@ -384,8 +399,8 @@ const FormularioComponent = () => {
         <>
             <section className="formulario_sections">
                 <section className="content" ref={contentForm}>
-                    <h3 className={`${viewData ? 'view' : ''}`}><span>!</span>Primero conozcámonos un poco más!</h3>
-                    <p className={`${viewData ? 'view' : ''}`}>Compárteme tus datos para contactarte si eres el ganador, y para enviarte sorpresas o nuevas promociones en el futuro.</p>
+                    <h3 className={`${viewData ? 'view' : ''}`}>¡Primero conozcámonos un poco más!</h3>
+                    <p className={`${viewData ? 'view' : ''}`}>{ enviar.compartir }</p>
                     {/* <span className="subtitle">*disclaimer sobre uso de datos</span> */}
                     <form onSubmit={ e => sendForm(e) } className={`${viewQuestion || viewDeseo ? 'view' : ''}`} >
 
@@ -481,11 +496,11 @@ const FormularioComponent = () => {
                                         <span>A. el regalo más especial de todos</span>
                                     </label>
                                     <label htmlFor="option_dos">
-                                        <input type="radio" name="option_one" id="option_dos" value="3. Algo que te seduzca a primera vista" required/>
+                                        <input type="radio" name="option_one" id="option_dos" value="2. Algo que te seduzca a primera vista" required/>
                                         <span>b. algo que te seduzca a primera vista</span>
                                     </label>
                                     <label htmlFor="option_tres">
-                                        <input type="radio" name="option_one" id="option_tres" value="4. Un detalle de alguien especial" required/>
+                                        <input type="radio" name="option_one" id="option_tres" value="3. Un detalle de alguien especial" required/>
                                         <span>c. un detalle de alguien especial</span>
                                     </label>
                                     <label htmlFor="option_cuatro">
@@ -543,7 +558,7 @@ const FormularioComponent = () => {
                                 {/* Pregunta 4 */}
 
                                 <section className="question">
-                                    <span className="item_question">4. si nos encontráramos a solas en tu casa esta Navidad, vos desearías...</span>
+                                    <span className="item_question">{ formulario.cuartaPregunta }</span>
                                     <label htmlFor="question_four_option_uno">
                                         <input type="radio" name="option_four" id="question_four_option_uno" value="1. Guardarme para un momento especial" required/>
                                         <span>A. guardarme para un momento especial</span>
@@ -571,7 +586,7 @@ const FormularioComponent = () => {
                                 {/* Message */}
 
                                 <label htmlFor="message" className="message">
-                                    <span><span className="interrogador">!</span>Ahora dejá tu deseo más seductor en mi buzón para quedar participando!</span>
+                                    <span dangerouslySetInnerHTML={{__html: deseo.text}} ></span>
                                     <textarea name="message" id="message"></textarea>
                                 </label>
 
@@ -628,7 +643,7 @@ const FormularioComponent = () => {
             {
                 openmodal ? ( 
                     <section className="view_modal">
-                        <ThanksComponent puntos={puntosUser} country={countryCode}/>
+                        <ThanksComponent gracias_button={gracias_button} gracias={gracias} puntos={puntosUser} country={countryCode}/>
                     </section>
                 ) : ''
             }

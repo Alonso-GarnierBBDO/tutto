@@ -95,6 +95,7 @@
 
         h3.view{
             display: flex;
+            align-items: flex-start;
         }
 
         p{
@@ -327,7 +328,9 @@
                         font-family: $font-four;
                         color: $color-siete;
                         width: 100%;
-                        display: block;
+                        display: flex;
+                        flex-flow: row;
+                        align-items: flex-start;
     
                         @include bp(laptop){
                             font-size: rem(23px);
@@ -335,8 +338,10 @@
                         }
 
                         .interrogador{
-                            display: inline-block;
-                            transform: rotate(173deg) translate(-2px, -3px);
+                            display: block;
+                            width: auto;
+                            transform: rotate(173deg) translate(0px, -1px);
+                            margin: 0px; 
                         }
     
                     }
