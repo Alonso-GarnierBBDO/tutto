@@ -1,12 +1,21 @@
 .content_inscription{
 
     //background-color: $color-quinto;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 45px;
     position: relative;
 
     @include bp(laptop){
         padding-bottom: 80px;
+    }
+
+    img {
+
+        width: 70%;
+        height: auto;
+        margin-bottom: 40px;
+        max-width: 300px;
+
     }
 
     .content{
@@ -19,6 +28,13 @@
         color: $color-cuarto;
         font-family: $font-two;
 
+        @include bp(tablet){
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            align-items: center;
+            margin-top: 30px;
+        }
+
         @include bp(laptop){
             max-width: 1050px;
         }
@@ -29,10 +45,33 @@
 
 
         p{
-            margin-bottom: 25px;
+            // margin-bottom: 25px;
+            font-size: rem(25px);
+
+            @include bp(tablet){
+                font-size: rem(30px);
+            }
+
+            @include bp(laptop){
+                font-size: rem(35px);
+            }
 
             &:last-of-type{
                 margin-bottom: 0px;
+            }
+
+            strong {
+                font-family: $font-four;
+                font-size: rem(20px);
+
+                @include bp(tablet){
+                    font-size: rem(25px);
+                }
+
+                @include bp(laptop){
+                    font-size: rem(30px);
+                }
+
             }
 
         }

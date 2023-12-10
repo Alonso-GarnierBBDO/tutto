@@ -1,4 +1,5 @@
-
+import BuzonImage from '@/assets/img/buzon_two.png';
+import Image from 'next/image';
 
 type Content = {
     content: {
@@ -13,8 +14,13 @@ const InscriptionComponent = ( { content } : Content ) => {
         <>
             <section className="content_inscription">
                 <section className="content">
-                    <p>{content.textOne}</p>
-                    <p>{content.textTwo}</p>
+                    <div className="image">
+                        <Image src={BuzonImage.src} width={BuzonImage.width} height={BuzonImage.height} alt='Imagen de buzon'/>
+                    </div>
+                    <div className="item_question">
+                        <p>{content.textOne}</p>
+                        <p><strong>{content.textTwo}</strong></p>
+                    </div>
                 </section>
             </section>
         </>

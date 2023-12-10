@@ -1,5 +1,5 @@
 header{
-    min-height: calc(100% - 40px); 
+    min-height: calc(100% - 20px); 
     width: calc(100% - 60px);
     //background-image: url('../../assets/img/background_mobile.jpg');
     background-size: cover;
@@ -12,6 +12,7 @@ header{
     overflow: hidden;
     align-items: center;
     z-index: 0;
+    padding-bottom: 0px;
 
 
     @include bp(tablet){
@@ -482,6 +483,7 @@ header{
                     font-size: rem(20px);
                     font-family: $font-two;
                     text-wrap: balance;
+                    text-transform: uppercase;
 
                     @include bp(laptop){
                         font-size: rem(25px);
