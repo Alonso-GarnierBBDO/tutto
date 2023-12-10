@@ -38,6 +38,7 @@ const Header = ( { header } : Content ) => {
                 <section className="content">
                     <section className="box">
                         {/* <Image src={ChocaloateImageEscritorio.src} width={250} height={250} priority alt="Chocolate tutto" title="Chocolate tutto"/> */}
+                        <Image className="placer_item" src={PlacerText.src} alt="Navidad es para dar...te placer" title="Navidad es para dar...te placer" width={PlacerText.width} height={PlacerText.height} priority/>
                     </section>
                     <section className="box">
                         <Image className="placer" src={PlacerText.src} alt="Navidad es para dar...te placer" title="Navidad es para dar...te placer" width={200} height={200} priority/>
