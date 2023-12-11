@@ -399,47 +399,39 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
         <>
             <section className="formulario_sections">
                 <section className="content" ref={contentForm}>
-                    <h3 className={`${viewData ? 'view' : ''}`}>¡Primero conozcámonos un poco más!</h3>
-                    <p className={`${viewData ? 'view' : ''}`}>{ enviar.compartir }</p>
+                    <p className={`subtitleForm ${viewData ? 'view' : ''}`}>{ enviar.compartir }</p>
                     {/* <span className="subtitle">*disclaimer sobre uso de datos</span> */}
                     <form onSubmit={ e => sendForm(e) } className={`${viewQuestion || viewDeseo ? 'view' : ''}`} >
 
                         <section className={`part_one content_item ${viewData ? 'view' : ''}`} ref={partOne}>
                             <label htmlFor="name">
-                                <span className="item">Nombre:</span>
-                                <input type="text" name="name" id="name" required/>
+                                <input type="text" placeholder="Nombre" name="name" id="name" required/>
                             </label>
                             <label htmlFor="lastName">
-                                <span className="item">Apellidos:</span>
-                                <input type="text" name="lastName" id="lastName" required/>
+                                <input type="text" name="lastName" placeholder="Apellidos:" id="lastName" required/>
                             </label>
                             <label htmlFor="genero">
-                                <span className="item">Genéro:</span>
                                 <select name="genero" id="genero" required>
-                                    <option value="">Seleccione el genéro</option>
+                                    <option value="">Genéro:</option>
                                     <option value="masculino">Masculino</option>
                                     <option value="femenino">Femenino</option>
                                     <option value="otro">Otro</option>
                                 </select>
                             </label>
                             <label htmlFor="email">
-                                <span className="item">Correo electrónico:</span>
-                                <input type="email" name="email" id="email" required/>
+                                <input type="email" placeholder="Correo electrónico:" name="email" id="email" required/>
                             </label>
                             <label htmlFor="phone">
-                                <span className="item">Teléfono (Ingresar con el código del país) :</span>
-                                <input type="phone" id="phone" name="phone" required/>
+                                <input type="phone" placeholder="Teléfono (Ingresar con el código del país) :" id="phone" name="phone" required/>
                             </label>
                             <label htmlFor="year">
-                                <span className="item">Edad:</span>
-                                <input type="number" max="100" min="5" id="year" name="year" required/>
+                                <input type="number" max="100" min="5" id="year" name="year" placeholder="Edad:" required/>
                             </label>
                             {
                                 countryCode == '/cam' ? (
                                     <label htmlFor="pais">
-                                        <span className="item">País:</span>
                                         <select name="pais" id="pais" required onChange={ viewItems }>
-                                            <option value="">Seleccione el país</option>
+                                            <option value="">País:</option>
                                             <option value="Guatemala">Guatemala</option>
                                             <option value="Honduras">Honduras</option>
                                             <option value="Panamá">Panamá</option>
@@ -458,13 +450,11 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                                                     {
                                                         openProvincia ? (
                                                             <label htmlFor="provincia">
-                                                                <span className="item">Provincia:</span>
-                                                                <input type="text" name="provincia" id="provincia" required/>
+                                                                <input type="text" placeholder="Provincia:" name="provincia" id="provincia" required/>
                                                             </label>
                                                         ) : (
                                                             <label htmlFor="departamentos">
-                                                                <span className="item">Departamento :</span>
-                                                                <input type="text" name="departamentos" id="departamentos" required/>
+                                                                <input type="text" placeholder="Departamento:" name="departamentos" id="departamentos" required/>
                                                             </label>
                                                         )
                                                     }
@@ -474,8 +464,7 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                                     </>
                                 ) : (
                                     <label htmlFor="provincia">
-                                        <span className="item">Provincia:</span>
-                                        <input type="text" name="provincia" id="provincia" required/>
+                                        <input type="text" name="provincia" placeholder="Provincia:" id="provincia" required/>
                                     </label>
                                 )
                             }
@@ -635,9 +624,9 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                     </form>
                 </section>
 
-                <section className="ilustracion">
+                {/* <section className="ilustracion">
                     <Image className="buzon" src={BuzonImage.src} alt="Ilustración de buzón" width={BuzonImage.width} height={BuzonImage.height} priority />
-                </section>
+                </section> */}
 
             </section>
             {

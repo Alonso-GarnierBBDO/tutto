@@ -22,7 +22,7 @@ function CR(){
             enviar: 'ENVIÁ TU DESEO AQUÍ',
             compartir: 'Compartime tus datos para contactarte si sos el ganador, y para enviarte sorpresas o nuevas promociones en el futuro.'
         },
-        gracias: "AHORA ME VOY A LEER TODOS LOS DESEOS QUE ME HAN LLEGADO Y SI TENÉS SUERTE...",
+        gracias: "<p>Listo, ya estás</p><strong>participando</strong><p>ahora me voy a leer todos los deseos que me han llegado y si tenés suerte... nos estaremos viendo muy pronto debajo del árbol</p>",
         gracias_button: "DESCUBRÍ AQUÍ TU TUTTO PARA NAVIDAD"
     }
 

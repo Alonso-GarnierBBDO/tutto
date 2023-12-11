@@ -48,6 +48,19 @@ const InscriptionComponent = ( { content } : Content ) => {
                             <p>5 kits con toda mi colección de temporada que te dejará sin aliento.</p>
                         </div>
                     </section>
+                    <section className='menu two'>
+                        <div>
+                            <hr />
+                            <Image src={TrianguloImage.src} width={TrianguloImage.width} height={TrianguloImage.height} alt="Triangulo Imagen"/>
+                        </div>
+                        <section>
+                            <h3>¡Primero conozcámonos un poco más!</h3>
+                        </section>
+                        <div>
+                            <Image src={TrianguloImage.src} width={TrianguloImage.width} height={TrianguloImage.height} alt="Triangulo Imagen"/>
+                            <hr />
+                        </div>
+                    </section>
                 </section>
             </section>
         </>
