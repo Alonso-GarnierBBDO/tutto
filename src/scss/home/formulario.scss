@@ -40,7 +40,6 @@
             background-image: url(../../assets/img/hoja_borde.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            // background-repeat: no-repeat;
 
             @include bp(tablet){
                 top: 15px;
@@ -59,7 +58,7 @@
         }
 
         @include bp(laptop){
-            max-width: 1050px;
+            max-width: 1200px;
         }
 
         @include bp(escritorio){

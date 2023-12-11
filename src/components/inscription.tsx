@@ -37,6 +37,17 @@ const InscriptionComponent = ( { content } : Content ) => {
                             <hr />
                         </div>
                     </section>
+                    <section className='all'>
+                        <div className='item one'>
+                            <p>1 cena para dos personas</p>
+                        </div>
+                        <div className='item two'>
+                            <p>1 masaje para dos personas</p>
+                        </div>
+                        <div className='item three'>
+                            <p>5 kits con toda mi colección de temporada que te dejará sin aliento.</p>
+                        </div>
+                    </section>
                 </section>
             </section>
         </>
