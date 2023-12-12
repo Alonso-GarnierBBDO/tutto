@@ -6,11 +6,11 @@ function CAM(){
 
     const content = {
         incription : {
-            textOne: '¡Responde mi formulario de los deseos y descubre cuál de mis versiones no puede faltar en tu lista de Navidad!​ ',
-            textTwo: ' Ahora solo completa las preguntas y participa por uno de los 5 kits con toda mi colección de temporada que te dejará sin aliento.'
+            textOne: '¡RespondE mi formulario de los deseos y descubrE cuál de mis versiones no puede faltar en',
+            textTwo: 'tu lista de Navidad!'
         },
         header: {
-            deseo: 'Algunos le dejan sus deseos a Santa, pero esta Navidad tu déjamelos a mí.'
+            deseo: 'HOLA, ¿YA HICISTE TU LISTA? algunos le dejan deseos a santa pero esta navidad tu dejámelos a mí.'
         },
         preguntas: {
             cuartaPregunta: '4. si nos encontráramos a solas en tu casa esta Navidad, tu desearías…'
@@ -20,16 +20,26 @@ function CAM(){
         },
         formulario: {
             enviar: 'Envia TU DESEO AQUÍ',
-            compartir: 'Compárteme tus datos para contactarte si eres el ganador, y para enviarte sorpresas o nuevas promociones en el futuro.'
+            compartir: 'COMPARTIME TUS DATOS PARA CONTACTARTE SI ERES EL GANADOR, Y PARA ENVIARTE SORPRESAS O NUEVAS PROMOCIONES EN EL FUTURO.'
         },
-        gracias: "AHORA ME VOY A LEER TODOS LOS DESEOS QUE ME HAN LLEGADO Y SI tienes SUERTE...",
+        gracias: "<p>Listo, ya estás</p><strong>participando</strong><p>ahora me voy a leer todos los deseos que me han llegado y si tienes suerte... nos estaremos viendo muy pronto debajo del árbol</p>",
         gracias_button: "DESCUBRE AQUÍ TU TUTTO PARA NAVIDAD",
+        premios_exist: {
+            one: false,
+            two: true,
+            three: false
+        },
+        premios_text: {
+            one: '',
+            two: '5 KITS CON TODA MI COLECCIÓN DE TEMPORADA QUE TE DEJARÁ SIN ALIENTO.',
+            three: ''
+        }
     }
 
     return (
         <>
             <Header header={content.header}/>
-            <InscriptionComponent content={content.incription}/>
+            <InscriptionComponent content={content.incription} existen={content.premios_exist} premiosText={content.premios_text}/>
             <FormularioComponent gracias_button={content.gracias_button} gracias={content.gracias} enviar={content.formulario} deseo={content.deseoPregunta} formulario={content.preguntas}/>
         </>
     )

@@ -7,9 +7,19 @@ type Content = {
         textOne: string,
         textTwo: string,
     },
+    existen: {
+        one: boolean,
+        two: boolean,
+        three: boolean
+    },
+    premiosText: {
+        one: string,
+        two: string,
+        three: string
+    }
 }
 
-const InscriptionComponent = ( { content } : Content ) => {
+const InscriptionComponent = ( { content, existen, premiosText } : Content ) => {
 
     return (
         <>
@@ -38,15 +48,37 @@ const InscriptionComponent = ( { content } : Content ) => {
                         </div>
                     </section>
                     <section className='all'>
-                        <div className='item one'>
-                            <p>1 cena para dos personas</p>
-                        </div>
-                        <div className='item two'>
-                            <p>1 masaje para dos personas</p>
-                        </div>
-                        <div className='item three'>
-                            <p>5 kits con toda mi colección de temporada que te dejará sin aliento.</p>
-                        </div>
+                        {
+                            existen.one ? (
+                                <div className='item one'>
+                                    <p>{premiosText.one}</p>
+                                </div>
+                            ) : ''
+                        }
+                        {
+                            existen.two ? (
+                                <>
+                                    {
+                                        !existen.one && existen.two ? (
+                                            <div className='item two doble'>
+                                                <p>{premiosText.two}</p>
+                                            </div>
+                                        ) : (
+                                            <div className='item two'>
+                                                <p>{premiosText.two}</p>
+                                            </div>
+                                        )
+                                    }
+                                </>
+                            ) : ''
+                        }
+                        {
+                            existen.three ? (
+                                <div className='item three'>
+                                    <p>{premiosText.three}</p>
+                                </div>
+                            ) : ''
+                        }
                     </section>
                     <section className='menu two'>
                         <div>

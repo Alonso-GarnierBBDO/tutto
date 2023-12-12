@@ -21,6 +21,9 @@ const MiTutto = () => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const points_string : string | null = urlParams.get('points');
+        const country_string : string | null = urlParams.get('country');
+
+        console.log(country_string);
 
         if(points_string){
 
@@ -32,16 +35,24 @@ const MiTutto = () => {
                 setTitlte('te llenan de placer');
             }else if(point_number <= 2){
                 setBackground(2);
-                setText('en tu lista de deseos no puede faltar mi colección bailey’s porque lo tuyo es dejarte seducir por');
-                setTitlte('mi versión más special');
+                if(country_string == '/ni'){
+                    setText('en tu lista de deseos no pueden faltar mi colección bailey’s porque lo tuyo es dejarte seducir por');
+                }else{
+                    setText('en tu lista de deseos no puede faltar mi colección bailey’s porque lo tuyo es dejarte seducir por');
+                }
+                setTitlte('mi versión más especial');
             }else if(point_number <= 3){
                 setBackground(3);
                 setText('en tu lista de deseos no pueden faltar mis muñecos coleccionables porque no podrás resistirte');
                 setTitlte('a mi lado más tierno');
             }else if(point_number <= 4){
                 setBackground(4);
-                setText('en tu lista de deseos no puede faltar mi chocolate real porque se nota que mis cuadritos');
-                setTitlte('te pondrán a sonar');
+                if(country_string == '/ni'){
+                    setText('en tu lista de deseos no pueden faltar mi chocolate real porque se nota que mis cuadritos');
+                }else{
+                    setText('en tu lista de deseos no puede faltar mi chocolate real porque se nota que mis cuadritos');
+                }
+                setTitlte('te pondrán a soñar');
             }
 
         }
@@ -57,8 +68,8 @@ const MiTutto = () => {
                 <section className="container">
                     <p>{ text }​</p>
                     <h3>{ title }</h3>
-                    <Image src={BackgroundTutto.src} alt="Fondo de color solido" width={500} height={500} priority />
                 </section>
+                <div className="base"></div>
 
 
                 {

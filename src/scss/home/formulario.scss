@@ -189,7 +189,7 @@
                     background-color: $color-doce;
                     border: none;
                     padding: 10px;
-                    border-radius: 5px;
+                    border-radius: 25px;
                     transition: .2s ease;
                     border: 2px solid;
                     border-color: $color-doce;
@@ -202,6 +202,7 @@
 
                     &::placeholder{
                         color: $color-cuarto;
+                        text-transform: uppercase;
                     }
 
                     @include bp(tablet){
@@ -214,6 +215,10 @@
                         border-color: $color-cuarto;
                     }
 
+                }
+
+                select {
+                    text-transform: uppercase;
                 }
 
 
@@ -320,10 +325,12 @@
                         align-items: flex-start;
                         text-align: center;
                         justify-content: center;
+                        text-transform: uppercase;
     
                         @include bp(laptop){
                             font-size: rem(30px);
                             text-transform: inherit;
+                            text-transform: uppercase;
                         }
 
                         .interrogador{
@@ -702,6 +709,7 @@
 
                 background-color: $color-trece;
                 padding: 15px;
+                border-radius: 20px;
 
                 @include bp(tablet){
 
@@ -794,7 +802,7 @@
             }
 
             a{
-                background-color: $color-siete;
+                background-color: $color-doce;
                 color: $color-cuarto;
                 padding: 5px 30px;
                 text-decoration: none;
@@ -832,9 +840,9 @@
                 // @include animate(link, 2s, ease, 1);
 
                 &:hover{
-                    border: 2px solid $color-siete;
+                    border: 2px solid $color-doce;
                     background-color: $color-cuarto;
-                    color: $color-siete;
+                    color: $color-doce;
                 }
 
                 &:active{

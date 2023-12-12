@@ -48,6 +48,7 @@
         p{
             // margin-bottom: 25px;
             font-size: rem(25px);
+            text-transform: uppercase;
 
             @include bp(tablet){
                 font-size: rem(30px);
@@ -64,13 +65,14 @@
             strong {
                 font-family: $font-four;
                 font-size: rem(20px);
+                text-transform: initial;
 
                 @include bp(tablet){
                     font-size: rem(25px);
                 }
 
                 @include bp(laptop){
-                    font-size: rem(30px);
+                    font-size: rem(35px);
                 }
 
             }
@@ -150,7 +152,7 @@
                 }
 
                 h3{
-                    color: $color-diez;
+                    color: $color-cuarto;
                     font-family: $font-two;
                     font-size: rem(20px);
                     text-wrap: balance;
@@ -167,7 +169,7 @@
 
         .menu.two{
             @include bp(tablet){
-                grid-template-columns: calc(40% - 15px) 60% ;
+                grid-template-columns: calc(40%) 60% ;
             }
 
             div {
@@ -278,6 +280,21 @@
 
                 }
 
+            }
+
+            .item.doble{
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 150px;
+                    height: 100px;
+                    z-index: 0;
+                    background-image: url('../../assets/img/lazo_bottom.png');
+                    background-size: 100% 100%;
+                    bottom: -8px;
+                    right: -21px;
+                    filter: drop-shadow(4px 6px 4px rgba(0, 0, 0, 0.42))
+                }
             }
 
             // .item.one {
