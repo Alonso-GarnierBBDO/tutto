@@ -204,7 +204,7 @@ header{
 
     .escarcha{
 
-        background-image: url('../../assets/img/escarcha_background.png');
+        background-image: url('../../assets/img/escarcha_background.webp');
         background-size: cover;
         background-position: center;
         transform: translateY(30px);
@@ -371,6 +371,13 @@ header{
 
             &:nth-of-type(2){
                 grid-area: 1 / 3;
+
+                @include bp(laptop){
+
+                    align-items: flex-end;
+
+                }
+
             }
 
             .placer{

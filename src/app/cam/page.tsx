@@ -10,7 +10,7 @@ function CAM(){
             textTwo: 'tu lista de Navidad!'
         },
         header: {
-            deseo: 'HOLA, ¿YA HICISTE TU LISTA? algunos le dejan deseos a santa pero esta navidad tu dejámelos a mí.'
+            deseo: 'HOLA, ¿YA HICISTE TU LISTA? algunos le dejan deseos a santa pero esta navidad tu déjamelos a mí.'
         },
         preguntas: {
             cuartaPregunta: '4. si nos encontráramos a solas en tu casa esta Navidad, tú desearías…'
