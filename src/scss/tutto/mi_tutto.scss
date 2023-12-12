@@ -35,8 +35,9 @@
         position: absolute;
         border-radius: 50%;
         background-image: url('../../assets/img/escarcha_background.png');
-        background-size: contain;
+        background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
 
         @include bp(laptop){
             top: 5%;
@@ -70,7 +71,7 @@
         left: 10%;
         bottom: 20px;
         width: 80%;
-        // height: 100%;
+        height: auto;
         object-fit: contain;
         user-select: none;
         pointer-events: none;
@@ -147,6 +148,7 @@
             font-family: $font-two;
             font-size: rem(30px);
             margin-top: 10px;
+            text-transform: uppercase;
 
             @include bp(tablet){
                 font-size: rem(45px);
