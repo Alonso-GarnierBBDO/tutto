@@ -498,14 +498,14 @@ header{
                     height: auto;
                     width: auto;
                     height: 140%;
-                    transform: translateY(-3%);
+                    transform: rotateY(159deg) translateY(-3%) translateX(-25%);
                     z-index: -1;
                     user-select: none;
                     pointer-events: none;
                     z-index: 99;
 
                     @include bp(laptop){
-                        transform: translateY(-3%);
+                        transform: rotateY(159deg) translateY(-3%) translateX(-25%);
                         right: -60px;
                     }
                     

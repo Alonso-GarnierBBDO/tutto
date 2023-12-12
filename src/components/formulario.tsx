@@ -40,7 +40,9 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
     const [viewState, setViewState] = useState<boolean>(false)
     const [openProvincia, setOpenProvincia] = useState<boolean>(true)
     const [preguntaDos, setPreguntaDos] = useState<string>('2. la nochebuena que deseás más sería en...');
+    // const [preguntaCuatro, setPreguntaCuatro ] = useState<string>('4. SI NOS ENCONTRÁRAMOS A SOLAS EN TU CASA ESTA NAVIDAD, TU DESEARÍAS…');
     const [respuestaCPreguntaDos, setRespuestaCPreguntaDos] = useState<string>('c. en tu casa con quien más querés');
+    const [phonePlaceholder, setPhonePlaceholder] = useState<string>('Teléfono:');
 
     // Registramos supabase
     const supabaseUrl = 'https://jkuwgrxanzpagiydglaz.supabase.co'
@@ -58,7 +60,8 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
 
         if(country_string == '/cam'){
             setPreguntaDos('2. la nochebuena que deseas más sería en...');
-            setRespuestaCPreguntaDos('c. en tu casa con quien más quieres')
+            setRespuestaCPreguntaDos('c. en tu casa con quien más quieres');
+            setPhonePlaceholder('Teléfono (Ingresar con el código del país):');
         }
 
 
@@ -154,12 +157,28 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
 
         if (e instanceof HTMLInputElement || e instanceof HTMLSelectElement) {
 
+
             if (!e.checkValidity()) {
                 e.classList.add('err');
                 questions = false;
                 quiz = false;
             } else {
                 e.classList.remove('err');
+            }
+
+            if(window.location.pathname == '/cam'){
+
+                const regex = /^\+\d{1,3}\s?\d{8,}$/;
+
+                if(e.name == 'phone'){
+                    if(regex.test(e.value)){
+                        e.classList.remove('err');
+                    }else {
+                        e.classList.add('err');
+                        questions = false;
+                        quiz = false;
+                    }
+                }
             }
 
         } else if (e instanceof HTMLSelectElement) {
@@ -409,6 +428,7 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
     }
 
 
+
     return (
         <>
             <section className="formulario_sections">
@@ -436,7 +456,7 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                                 <input type="email" placeholder="Correo electrónico:" name="email" id="email" required/>
                             </label>
                             <label htmlFor="phone">
-                                <input type="phone" placeholder="Teléfono (Ingresar con el código del país) :" id="phone" name="phone" required/>
+                                <input type="tel" placeholder={phonePlaceholder} id="phone" name="phone" required/>
                             </label>
                             <label htmlFor="year">
                                 <input type="number" max="100" min="5" id="year" name="year" placeholder="Edad:" required/>

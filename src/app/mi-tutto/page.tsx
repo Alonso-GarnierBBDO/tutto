@@ -23,8 +23,6 @@ const MiTutto = () => {
         const points_string : string | null = urlParams.get('points');
         const country_string : string | null = urlParams.get('country');
 
-        console.log(country_string);
-
         if(points_string){
 
             const point_number : number = parseFloat(points_string);
