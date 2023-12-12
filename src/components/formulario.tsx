@@ -168,10 +168,11 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
 
             if(window.location.pathname == '/cam'){
 
+                const patron = /^(\+502|502|504|\+504|507|\+507|503|\+503)/;
                 const regex = /^\+\d{1,3}\s?\d{8,}$/;
 
                 if(e.name == 'phone'){
-                    if(regex.test(e.value)){
+                    if(regex.test(e.value) || patron.test(e.value)){
                         e.classList.remove('err');
                     }else {
                         e.classList.add('err');
@@ -456,7 +457,7 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                                 <input type="email" placeholder="Correo electrónico:" name="email" id="email" required/>
                             </label>
                             <label htmlFor="phone">
-                                <input type="tel" placeholder={phonePlaceholder} id="phone" name="phone" required/>
+                                <input type="text" placeholder={phonePlaceholder} id="phone" name="phone" required/>
                             </label>
                             <label htmlFor="year">
                                 <input type="number" max="100" min="5" id="year" name="year" placeholder="Edad:" required/>
