@@ -33,13 +33,14 @@ function CR(){
             one: '1 CENA PARA DOS PERSONAS',
             two: '1 MASAJE PARA DOS PERSONAS',
             three: '5 KITS CON TODA MI COLECCIÓN DE TEMPORADA QUE TE DEJARÁ SIN ALIENTO.'
-        }
+        },
+        text: 'Ahora solo completá las preguntas y participá por:'
     }
 
     return (
         <>
             <Header header={content.header}/>
-            <InscriptionComponent content={content.incription}  existen={content.premios_exist} premiosText={content.premios_text}/>
+            <InscriptionComponent content={content.incription}  existen={content.premios_exist} premiosText={content.premios_text} text={content.text}/>
             <FormularioComponent gracias_button={content.gracias_button} gracias={content.gracias} enviar={content.formulario} deseo={content.deseoPregunta}  formulario={content.preguntas}/>
 
         </>

@@ -16,10 +16,11 @@ type Content = {
         one: string,
         two: string,
         three: string
-    }
+    },
+    text: string,
 }
 
-const InscriptionComponent = ( { content, existen, premiosText } : Content ) => {
+const InscriptionComponent = ( { content, existen, premiosText, text } : Content ) => {
 
     return (
         <>
@@ -40,7 +41,7 @@ const InscriptionComponent = ( { content, existen, premiosText } : Content ) => 
                             <Image src={TrianguloImage.src} width={TrianguloImage.width} height={TrianguloImage.height} alt="Triangulo Imagen"/>
                         </div>
                         <section>
-                            <h3>Ahora solo completá las preguntas y participá por:</h3>
+                            <h3>{text}</h3>
                         </section>
                         <div>
                             <Image src={TrianguloImage.src} width={TrianguloImage.width} height={TrianguloImage.height} alt="Triangulo Imagen"/>

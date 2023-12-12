@@ -39,16 +39,30 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
     const [puntosUser, setPuntosUser] = useState<number>(0);
     const [viewState, setViewState] = useState<boolean>(false)
     const [openProvincia, setOpenProvincia] = useState<boolean>(true)
+    const [preguntaDos, setPreguntaDos] = useState<string>('2. la nochebuena que deseás más sería en...');
+    const [respuestaCPreguntaDos, setRespuestaCPreguntaDos] = useState<string>('c. en tu casa con quien más querés');
 
     // Registramos supabase
     const supabaseUrl = 'https://jkuwgrxanzpagiydglaz.supabase.co'
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImprdXdncnhhbnpwYWdpeWRnbGF6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDg2ODAwNCwiZXhwIjoyMDE2NDQ0MDA0fQ.CPz7_wYbBhqYBrJJqxbYrRi2fgvS7vQuinV-5bvrnEI';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
+    
+
 
     useEffect( () => {
 
         setCountryCode(window.location.pathname);
+
+        const country_string : string | null = window.location.pathname;
+
+        if(country_string == '/cam'){
+            setPreguntaDos('2. la nochebuena que deseas más sería en...');
+            setRespuestaCPreguntaDos('c. en tu casa con quien más quieres')
+        }
+
+
+
 
     }, [])
 
@@ -501,7 +515,7 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                                 {/* Pregunta 2 */}
 
                                 <section className="question">
-                                    <span className="item_question">2. la nochebuena que deseás más sería en...</span>
+                                    <span className="item_question">{preguntaDos}</span>
                                     <label htmlFor="question_two_option_uno">
                                         <input type="radio" name="option_two" id="question_two_option_uno" value="1. Una cabaña secreta y especial" required/>
                                         <span>A. una cabaña secreta y especial</span>
@@ -512,7 +526,7 @@ const FormularioComponent = ({formulario, deseo, enviar, gracias, gracias_button
                                     </label>
                                     <label htmlFor="question_two_option_tres">
                                         <input type="radio" name="option_two" id="question_two_option_tres" value="3. En tu casa con quien más querés" required/>
-                                        <span>c. en tu casa con quien más querés</span>
+                                        <span>{respuestaCPreguntaDos}</span>
                                     </label>
                                     <label htmlFor="question_two_option_cuatro">
                                         <input type="radio" name="option_two" id="question_two_option_cuatro" value="4. En un lugar exótico que te sorprenda" required/>
